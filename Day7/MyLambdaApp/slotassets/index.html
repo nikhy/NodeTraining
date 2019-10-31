@@ -8,9 +8,9 @@
 <script type="text/javascript">
 	// Configure AWS SDK for JavaScript & set region and credentials
 // Initialize the Amazon Cognito credentials provider
-AWS.config.region = 'us-west-2'; // Region
+AWS.config.region = 'ap-southeast-1'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'IDENTITY_POOL_ID',
+    IdentityPoolId: 'ap-southeast-1:d53fdec3-e0cd-4a35-a549-0fdc0d035bfc',
 });
 	
 	/// VARIABLES AND DATA MAP NEEDED ///
@@ -18,7 +18,7 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 	var slotResults;
 
 	/// Prepare to call Lambda function
-	lambda = new AWS.Lambda({region: 'us-west-2', apiVersion: '2015-03-31'});
+	lambda = new AWS.Lambda({region: 'ap-southeast-1', apiVersion: '2015-03-31'});
 	var pullParams = {
 		FunctionName : 'slotpull',
 		InvocationType : 'RequestResponse',
@@ -61,9 +61,9 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 	function displayPull() {
 		isSpinning = false;
 		if (pullResults.isWinner) {
-			winner_light.visibility = visible;
+			winner_light.visibility = "visible";
 		}
-//		prompt(JSON.stringify(pullResults));
+		console.log(JSON.stringify(pullResults));
 		slot_L.src = pullResults.leftWheelImage.file.S;
 		slot_M.src = pullResults.middleWheelImage.file.S;
 		slot_R.src =  pullResults.rightWheelImage.file.S;
